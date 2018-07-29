@@ -72,7 +72,7 @@ class HelperService extends Service
      * @return bool
      */
     public function isUserLoggedByEmail( $userEmail ) {
-        return isset($_SESSION) && isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true && $_SESSION['user_email'] == $userEmail;
+        return $_SESSION['user_email'] == $userEmail;
     }
 
     /**
@@ -82,10 +82,8 @@ class HelperService extends Service
      */
     public function isUserLogged() {
         return
-            isset($_SESSION['loggedin']) && !empty($_SESSION['loggedin']) &&
+            isset($_SESSION['user_name']) && !empty($_SESSION['user_name']) &&
             isset($_SESSION['user_email']) && !empty($_SESSION['user_email']) &&
-            isset($_SESSION['user_survey_done']) &&
-            isset($_SESSION['user_lang_id']) && !empty($_SESSION['user_lang_id']) &&
             isset($_SESSION['user_id']) && !empty($_SESSION['user_id']);
     }
 
@@ -98,7 +96,7 @@ class HelperService extends Service
     public function getUserObjFromSession($email) {
         $userObj = null;
         if ($this->isUserLogged() && $this->isUserLoggedByEmail($email)) {
-            $userObj = new User($_SESSION['user_id'], $_SESSION['user_email'], $_SESSION['user_survey_done'], $_SESSION['user_lang_id']);
+            $userObj = new User($_SESSION['user_id'], $_SESSION['user_email'], $_SESSION['user_name']);
         }
         return $userObj;
     }
