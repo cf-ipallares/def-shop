@@ -63,7 +63,7 @@ class UserRepository extends Service
      */
     public function findUserByMailAndPassword($email, $pwd) {
         $pdo = $this->dbService->getConnection();
-        $sql = "select * from UserDB where Email = :email and Password = :pwd";
+        $sql = "select * from Users where email = :email and password = :pwd";
 
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':email', $email, PDO::PARAM_STR);
