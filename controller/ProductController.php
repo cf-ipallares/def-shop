@@ -15,7 +15,14 @@ class ProductController extends Controller
     public function productsAction() {
         /** @var $productRepository ProductRepository */
         $productRepository = $this->container->getService(Constants::PRODUCT_REPOSITORY_SERVICE);
+        /** @var  $helperService HelperService*/
+        $helperService = $this->container->getService(Constants::HELPER_SERVICE);
         $products = $productRepository->findProducts();
+
+        if ($helperService->isUserLogged()) {
+            $user = $helperService->getUserObjFromSession($_SESSION['user_email']);
+        }
+
         $action = "products";
         // I don't like this, but helps to simplify the url prefix I need to use:
         $urlPrefix = $this->container->getService('config_service')->get('url_prefix');

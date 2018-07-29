@@ -42,12 +42,9 @@ class UserRepository extends Service
         $userObj = $this->helperService->getUserObjFromSession($email);
         if ($userObj == null) {
             if ( $user =  $this->dbService->findUserByMailAndPassword($email, $pwd) ) {
-                $_SESSION['loggedin'] = true;
                 $_SESSION['user_email'] = $email;
-                $_SESSION['user_id'] = $user->CID;
-                $_SESSION['user_survey_done'] = $user->is_survey_done;
-                $_SESSION['user_lang_id'] = $user->lang_fk;
-                /** @var $userObj User */
+                $_SESSION['user_id'] = $user->id;
+                $_SESSION['user_name'] = $user->name;
                 $userObj = $this->helperService->getUserObjFromSession($email);
             }
         }

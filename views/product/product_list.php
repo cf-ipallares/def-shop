@@ -1,6 +1,11 @@
 <?php
     $basketUrl = $urlPrefix. "basket";
+    if (isset($user) && @$user->getName()) {
+        echo '<div class="def-shop-hello-user">Hello ' . $user->getName().  '</div>';
+    }
 ?>
+
+
 
 <button type="button" class="btn btn-default btn-lg def-shop-basket-button" data-basket-url="<?php echo $basketUrl ?>">
   <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>Basket
