@@ -55,3 +55,5 @@
 * parameters.yml shouldn't be pushed to github but a .dist version. First because it stores sensitive info (DB password) and also data that changes from one server/env to the other.
 
 * I really don't like the approach that I took in the code to put together products and colors. I would cahnge it to a view in the database that put tables together and this way the conversion between the database and the Product Model would be way simpler.
+
+* Payment (both front and backend) should only be available when a user is logged.
