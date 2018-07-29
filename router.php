@@ -15,11 +15,10 @@ $userController = new UserController($container);
 $paymentController = new PaymentController($container);
 
 $routes = [
-    'GET/' => array($loginController, 'indexAction'),
     'GET/login' => array($loginController, 'loginFormAction'),
     'POST/login' => array($loginController, 'loginAction'),
     'GET/products' => array($productController, 'productsAction'),
-    'POST/category/products' => array($productController, 'categoryProductsAction'),
+    'GET/color/products' => array($productController, 'categoryProductsAction'),
     'POST/basket/add-product' => array($basketController, 'addProductAction'),
     'GET/basket' => array($basketController, 'basketAction'),
     'GET/user/create' => array($userController, 'createUserFormAction'),

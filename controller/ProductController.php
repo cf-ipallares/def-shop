@@ -2,7 +2,6 @@
 namespace controller;
 
 use repositories\ProductRepository;
-use repositories\UserRepository;
 use services\HelperService;
 use constants\Constants;
 
@@ -41,7 +40,7 @@ class ProductController extends Controller
      * Shows a list of products filtered by color
      *
      * Method GET
-     * Route "/category/products"
+     * Route "/color/products"
      */
     public function colorProductsAction() {
         /** TODO */
