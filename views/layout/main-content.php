@@ -8,6 +8,9 @@
         else if (isset($action) && $action == 'basket') {
             include ROOT . "views/basket/basket.php";
         }
+        else if (isset($action) && $action == 'createUserForm') {
+            include ROOT . "views/user/create_user.php";
+        }
         ?>
     </div>
 </div>
