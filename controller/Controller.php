@@ -9,16 +9,19 @@
 namespace controller;
 
 
+use container\Container;
+
 class Controller
 {
+    /** @var  $container Container */
     protected $container;
 
     /**
      * Controller constructor.
      *
-     * @param $container
+     * @param Container $container
      */
-    public function __construct($container)
+    public function __construct(Container $container)
     {
         $this->container = $container;
     }
