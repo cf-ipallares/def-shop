@@ -6,6 +6,7 @@ use model\User;
 use services\DbService;
 use services\HelperService;
 use services\Service;
+use PDO;
 
 class UserRepository extends Service
 {
@@ -70,6 +71,31 @@ class UserRepository extends Service
 
         $user = $stmt->fetch(PDO::FETCH_OBJ);
         $pdo = null;
+
+        return $user;
+    }
+
+    /**
+     * Inserts a user in the DB
+     *
+     * @param string $name
+     * @param string $email
+     * @param string $pwd
+     * @return bool
+     */
+    public function createUser(string $name, string $email, string $pwd) {
+        $pdo = $this->dbService->getConnection();
+        $sql = "insert into Users(name, email, password) values (:name, :email, :password)";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $stmt->bindParam(':password', md5($pwd), PDO::PARAM_STR);
+        $user = $stmt->execute();
+
+        $pdo = null;
+
+        // NOTE: Here is necessary to do some error management with $stmt->errorInfo() and catching exceptions
 
         return $user;
     }

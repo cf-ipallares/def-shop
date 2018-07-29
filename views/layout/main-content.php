@@ -8,7 +8,7 @@
         else if (isset($action) && $action == 'basket') {
             include ROOT . "views/basket/basket.php";
         }
-        else if (isset($action) && $action == 'createUserForm') {
+        else if (isset($action) && $action == 'createUserForm' || $action == 'createUser') {
             include ROOT . "views/user/create_user.php";
         }
         ?>

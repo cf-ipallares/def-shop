@@ -3,6 +3,9 @@ namespace controller;
 
 
 
+use constants\Constants;
+use repositories\UserRepository;
+
 class UserController extends Controller
 {
     /**
@@ -14,7 +17,7 @@ class UserController extends Controller
     {
         $action = "createUserForm";
         // I don't like this, but helps to simplify the url prefix I need to use:
-        $urlPrefix = $this->container->getService('config_service')->get('url_prefix');
+        $urlPrefix = $this->container->getService(Constants::CONFIG_SERVICE)->get('url_prefix');
         include ROOT. "views/layout/layout.php";
     }
 
@@ -25,8 +28,22 @@ class UserController extends Controller
      */
     public function createUserAction()
     {
-        /* TODO: Create the user in the DB */
+        /** @var $userRepository UserRepository */
+        $userRepository = $this->container->getService(Constants::USER_REPOSITORY_SERVICE);
 
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+
+        $urlPrefix = $this->container->getService(Constants::CONFIG_SERVICE)->get('url_prefix');
+
+        $user = $userRepository->createUser($name, $email, $password);
+        if (!$user) {
+            $errorMsg = 'An error occured while creting the user please contact the administrator';
+        }
+        else {
+            $confMsg = 'Your user was properly created. You can login in <a href=" ' . $urlPrefix .  'login ">here</a>';
+        }
 
         $action = "createUser";
         // I don't like this, but helps to simplify the url prefix I need to use:
