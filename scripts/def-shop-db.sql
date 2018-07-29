@@ -7,8 +7,7 @@ USE def_shop;
 
 CREATE TABLE Users (
   id INTEGER auto_increment,
-  first_name varchar(256) NOT NULL,
-  last_name varchar(256) NOT NULL,
+  name varchar(256) NOT NULL,
   email varchar(256) NOT NULL,
   password varchar(256) NOT NULL,
   PRIMARY KEY (id)
@@ -42,8 +41,6 @@ CREATE TABLE Orders (
   FOREIGN KEY (user_fk) REFERENCES Users(id)
 );
 
-
-
 CREATE TABLE Orders_Products(
   order_fk INTEGER,
   product_fk INTEGER,
@@ -53,8 +50,6 @@ CREATE TABLE Orders_Products(
   FOREIGN KEY (product_fk) REFERENCES Products(id),
   FOREIGN KEY (order_fk) REFERENCES Orders(id)
 );
-
-INSERT INTO Users VALUES (1, 'Ivan', 'Pallares Trivino', 'ivan@ipallares.com', 'dea56e47f1c62c30b83b70eb281a6c39');
 
 INSERT INTO Colors VALUES (1, 'maroon');
 INSERT INTO Colors VALUES (2, 'orange');
