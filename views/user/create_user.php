@@ -5,12 +5,7 @@
 <h1>Register a new user</h1>
 
 <?php
-if(isset($confMsg)) {
-    echo "<span class='label label-success def-shop-msg'>$confMsg</span>";
-}
-if(isset($errorMsg)) {
-    echo "<span class='label label-danger def-shop-msg'>$errorMsg</span>";
-}
+    include ROOT . "views/layout/messages.php";
 ?>
 
 <form action="<?php echo $createUserUrl ?>" method="POST">
