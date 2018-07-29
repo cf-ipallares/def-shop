@@ -37,6 +37,7 @@ CREATE TABLE Orders (
   net_price DECIMAL(8, 2) NOT NULL,
   gross_price DECIMAL(8, 2) NOT NULL,
   user_fk INTEGER,
+  payment_method INTEGER NOT NULL,
   PRIMARY KEY(id),
   FOREIGN KEY (user_fk) REFERENCES Users(id)
 );
@@ -46,6 +47,8 @@ CREATE TABLE Orders_Products(
   product_fk INTEGER,
   quantity INTEGER NOT NULL,
   net_price DECIMAL(8, 2) NOT NULL,
+  gross_price DECIMAL(8, 2) NOT NULL,
+  tax DECIMAL(4, 2) NOT NULL,
   PRIMARY KEY(order_fk, product_fk),
   FOREIGN KEY (product_fk) REFERENCES Products(id),
   FOREIGN KEY (order_fk) REFERENCES Orders(id)
