@@ -9,7 +9,7 @@ $loginUrl = $urlPrefix . 'login';
     include ROOT . "views/layout/messages.php";
 ?>
 
-<form action="<?php echo $loginUrl ?>" method="GET">
+<form action="<?php echo $loginUrl ?>" method="POST">
     <div class="input-group">
         <span class="input-group-addon">Email Address</span>
         <input type="text" class="form-control" id="email" name="email">
