@@ -1,4 +1,18 @@
-<!-- Payment methods -->
+<?php
+    $paymentUrl = $urlPrefix. "payment";
+    if (isset($user) && @$user->getName()) {
+        echo '<div class="def-shop-hello-user">Hello ' . $user->getName().  '</div>';
+    }
+?>
+
+
+<button type="button" class="btn btn-default btn-lg def-shop-payment-method" data-payment-method="1" data-payment-url="<?php echo $paymentUrl ?>">
+    <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>Payment Method 1
+</button>
+
+<button type="button" class="btn btn-default btn-lg def-shop-payment-method" data-payment-method="2" data-payment-url="<?php echo $paymentUrl ?>">
+    <span class="glyphicon glyphicon-euro" aria-hidden="true"></span>Payment Method 2
+</button>
 
 <?php
     include ROOT . "views/basket/basket_product_list.php";

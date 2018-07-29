@@ -14,6 +14,9 @@
         else if (isset($action) && $action == 'login') {
             include ROOT . "views/user/login.php";
         }
+        else if (isset($action) && $action == 'payment') {
+            include ROOT . "views/payment/payment_confirmation.php";
+        }
         ?>
     </div>
 </div>

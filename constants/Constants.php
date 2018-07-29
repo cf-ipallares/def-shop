@@ -26,4 +26,6 @@ class Constants
     const BASKET_COOKIE_NAME = 'basket';
     const BASKET_COOKIE_EXPIRATION = 86400;
 
+    const ORDER_REPOSITORY_SERVICE = 'order_repostiory_service';
+
 }

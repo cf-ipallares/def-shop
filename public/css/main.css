@@ -7,6 +7,9 @@
 .product-list td, .product-list th {
     text-align:center;
 }
+.glyphicon {
+    margin-right: 10px;
+}
 
 .def-shop-basket-button {
     margin-bottom:20px;
@@ -33,4 +36,9 @@
     margin-bottom:25px;
     float:right;
     clear:both;
+}
+
+.def-shop-payment-method {
+    margin-right:25px;
+    margin-bottom:25px;
 }

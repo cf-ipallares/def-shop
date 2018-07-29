@@ -1,6 +1,8 @@
 <?php
-    session_start();
 
+    session_start();
+    $_SESSION['user_id'] = 1;
+    //session_destroy();
     include '../autoload.php';
 
     use services\ConfigService;
@@ -9,6 +11,7 @@
     use repositories\ProductRepository;
     use repositories\ColorRepository;
     use repositories\BasketRepository;
+    use repositories\OrderRepository;
     use services\HelperService;
     use container\Container;
     use services\ORMService;
@@ -33,6 +36,8 @@
     $productRepository  = new ProductRepository($dbService, $helperService, $ormService, $colorRepository->getColors());
     /** @var  $basketRepository BasketRepository */
     $basketRepository = new BasketRepository($productRepository);
+    /** @var  $orderRepository OrderRepository */
+    $orderRepository = new OrderRepository($dbService, $helperService);
 
     $container->addService(Constants::CONFIG_SERVICE, $configService);
     $container->addService(Constants::HELPER_SERVICE, $helperService);
@@ -41,5 +46,6 @@
     $container->addService(Constants::PRODUCT_REPOSITORY_SERVICE, $productRepository);
     $container->addService(Constants::ORM_SERVICE, $ormService);
     $container->addService(Constants::BASKET_REPOSITORY_SERVICE, $basketRepository);
+    $container->addService(Constants::ORDER_REPOSITORY_SERVICE, $orderRepository);
 
     include '../router.php';

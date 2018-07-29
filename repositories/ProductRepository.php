@@ -75,9 +75,9 @@ class ProductRepository extends Service
 
     function findProductsByIds(array $productIds) {
         $pdo = $this->dbService->getConnection();
-        $sql = "select * from Products where id in (:product_ids)";
+        $stringProductIds = implode(',', $productIds);
+        $sql = "select * from Products where id in ($stringProductIds)";
         $stmt = $pdo->prepare($sql);
-        $stmt->bindParam(':product_ids', implode(',', $productIds), PDO::PARAM_STR);
         $stmt->execute();
         $productTRS = $stmt->fetchAll(PDO::FETCH_OBJ);
         $pdo = null;

@@ -29,6 +29,9 @@ class BasketRepository extends Service
             if ($productCtr) {
                 $basket[$productId] = $productCtr + 1;
             }
+            else {
+                $basket[$productId] = 1;
+            }
         }
         else {
             $basket[$productId] = 1;

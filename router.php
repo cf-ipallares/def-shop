@@ -4,11 +4,13 @@ use controller\LoginController;
 use controller\ProductController;
 use controller\BasketController;
 use controller\UserController;
+use controller\PaymentController;
 
 $loginController = new LoginController($container);
 $productController = new ProductController($container);
 $basketController = new BasketController($container);
 $userController = new UserController($container);
+$paymentController = new PaymentController($container);
 
 $routes = [
     'GET/' => array($loginController, 'indexAction'),
@@ -19,7 +21,8 @@ $routes = [
     'POST/basket/add-product' => array($basketController, 'addProductAction'),
     'GET/basket' => array($basketController, 'basketAction'),
     'GET/user/create' => array($userController, 'createUserFormAction'),
-    'POST/user/create' => array($userController, 'createUserAction')
+    'POST/user/create' => array($userController, 'createUserAction'),
+    'GET/payment' => array($paymentController, 'paymentAction')
 ];
 
 $path = str_replace('/def-shop/public/index.php', '', parse_url($_SERVER['REQUEST_URI'])['path']);
