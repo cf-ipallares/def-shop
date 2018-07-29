@@ -10,23 +10,6 @@ class LoginController extends Controller
 {
     /**
      * Method GET
-     * Route "/"
-     */
-    public function indexAction() {
-        /** @var HelperService $helperService */
-        $helperService = $this->container->getService(Constants::HELPER_SERVICE);
-        if (!$helperService->isUserLogged()) {
-            $this->loginFormAction();
-        }
-        else {
-            $userObj = $helperService->getUserObjFromSession($_SESSION['user_email']);
-            $template = "user_menu.php";
-            include ROOT. "views/layout.php";
-        }
-    }
-
-    /**
-     * Method GET
      * Route "/login"
      */
     public function loginFormAction() {
