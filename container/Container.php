@@ -5,17 +5,33 @@ namespace container;
 use exceptions\ServerErrorException;
 use services\Service;
 
+/**
+ * Class to make services and information available all along the code.
+ *
+ * Class Container
+ * @package container
+ */
 class Container
 {
     /** @var  $data array */
     private $data;
+    /** @var  $services array */
     private $services;
 
-    public function addService($key, Service $service) {
+    /**
+     * @param string $key
+     * @param Service $service
+     */
+    public function addService(string $key, Service $service) {
         $this->services[$key] = $service;
     }
 
-    public function getService($key) {
+    /**
+     * @param string $key
+     * @return mixed
+     * @throws ServerErrorException
+     */
+    public function getService(string $key) {
         if (!key_exists($key, $this->services)) {
             throw new ServerErrorException();
         }
@@ -33,6 +49,7 @@ class Container
     }
 
     /**
+     * Get information from the container
      *
      * @param string $key
      * @return mixed

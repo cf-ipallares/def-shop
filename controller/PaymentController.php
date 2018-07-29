@@ -1,14 +1,17 @@
 <?php
 namespace controller;
 
-
-
 use constants\Constants;
 use model\User;
 use repositories\BasketRepository;
 use repositories\OrderRepository;
-use repositories\UserRepository;
 
+/**
+ * Class to manage the payment for an order.
+ *
+ * Class PaymentController
+ * @package controller
+ */
 class PaymentController extends Controller
 {
     /**
@@ -18,10 +21,7 @@ class PaymentController extends Controller
      */
     public function paymentAction()
     {
-        // NOTE: To simplify I am implementing the action with a GET method (No validations, or actions taken whatsoever other than saving the order and confirming)
-
         $paymentMethod = $_GET['payment_method'];
-
 
         /** @var  $helperService HelperService*/
         $helperService = $this->container->getService(Constants::HELPER_SERVICE);
@@ -38,7 +38,6 @@ class PaymentController extends Controller
         $orderRepository = $this->container->getService(Constants::ORDER_REPOSITORY_SERVICE);
         $orderRepository->insertOrder($basket, $user->getId(), $paymentMethod);
 
-        // TODO: Insert the order in the DB
         $action = "payment";
         // I don't like this, but helps to simplify the url prefix I need to use:
         $urlPrefix = $this->container->getService(Constants::CONFIG_SERVICE)->get('url_prefix');

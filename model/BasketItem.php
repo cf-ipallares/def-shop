@@ -2,6 +2,12 @@
 
 namespace model;
 
+/**
+ * Model that contains the info related to an item in the Basket.
+ *
+ * Class BasketItem
+ * @package model
+ */
 class BasketItem {
 
     /** @var $ctr int */
@@ -51,7 +57,4 @@ class BasketItem {
     {
         $this->product = $product;
     }
-
-
-
 }

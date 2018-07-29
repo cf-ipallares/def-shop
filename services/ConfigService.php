@@ -2,6 +2,12 @@
 
 namespace services;
 
+/**
+ * Class to provide an object with configuration set in parameters.yml
+ *
+ * Class ConfigService
+ * @package services
+ */
 class ConfigService extends Service
 {
 
@@ -22,7 +28,15 @@ class ConfigService extends Service
         fclose($parametersFile);
     }
 
-    public function get($key, $required = true) {
+    /**
+     * Returns the value of a config property or throws an Exception if it doesn't exist.
+     *
+     * @param string $key
+     * @param bool $required
+     * @return string
+     * @throws \Exception
+     */
+    public function get(string $key, $required = true) : string {
         if ( (!key_exists($key, $this->configuration ) || empty($this->configuration[$key]))  && $required) {
             throw new \Exception("Missing required configuration parameter");
         }

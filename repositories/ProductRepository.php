@@ -38,8 +38,11 @@ class ProductRepository extends Service
         $this->colors = $colors;
     }
 
-
-
+    /**
+     * Returns all products in the DB.
+     *
+     * @return array - [ Model\Product ]
+     */
     public function findProducts() : array {
         $pdo = $this->dbService->getConnection();
         $sql = "select * from Products";

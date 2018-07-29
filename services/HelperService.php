@@ -9,9 +9,15 @@
 namespace services;
 
 
-use constants\Constants;
 use model\User;
 
+/**
+ * Class with general methods that can be necessary all around the application.
+ *
+ * Class HelperService
+ * @package services
+ *
+ */
 class HelperService extends Service
 {
     /**
@@ -42,17 +48,6 @@ class HelperService extends Service
      */
     public function echoTestSuccess($msg) {
         echo "<div style='background-color:green;color:white;'>$msg</div>";
-    }
-
-    /**
-     * Cleans session info from the user logged.
-     */
-    public function logOut() {
-        unset($_SESSION['loggedin']);
-        unset($_SESSION['user_email']);
-        unset($_SESSION['user_survey_done']);
-        unset($_SESSION['user_lang_id']);
-        unset($_SESSION['user_id']);
     }
 
     /**

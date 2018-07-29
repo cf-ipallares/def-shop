@@ -3,6 +3,12 @@
 namespace model;
 
 
+/**
+ * Model that contains the info related to Colors
+ *
+ * Class Color
+ * @package model
+ */
 class Color
 {
     /** @var $id int */

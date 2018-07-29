@@ -2,6 +2,12 @@
 
 namespace model;
 
+/**
+ * Model that contains the info related to users.
+ *
+ * Class User
+ * @package model
+ */
 class User {
 
     /** @var  $id int */

@@ -1,16 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: ipallares
- * Date: 19.11.17
- * Time: 13:41
- */
 
 namespace controller;
 
-
 use container\Container;
 
+/**
+ * Parent class for all Controllers.
+ *
+ * Class Controller
+ * @package controller
+ */
 class Controller
 {
     /** @var  $container Container */

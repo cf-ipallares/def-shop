@@ -2,12 +2,17 @@
 
 namespace repositories;
 
-use model\User;
 use services\DbService;
 use services\HelperService;
 use services\Service;
 use PDO;
 
+/**
+ * Repository to manage tasks related to the Basket.
+ *
+ * Class UserRepository
+ * @package repositories
+ */
 class UserRepository extends Service
 {
     /** @var  $dbService DbService */
@@ -41,7 +46,7 @@ class UserRepository extends Service
     public function loginUser($email, $pwd) {
         $userObj = $this->helperService->getUserObjFromSession($email);
         if ($userObj == null) {
-            if ( $user =  $this->dbService->findUserByMailAndPassword($email, $pwd) ) {
+            if ( $user =  $this->findUserByMailAndPassword($email, $pwd) ) {
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_id'] = $user->id;
                 $_SESSION['user_name'] = $user->name;

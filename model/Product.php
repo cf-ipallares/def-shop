@@ -2,6 +2,12 @@
 
 namespace model;
 
+/**
+ * Model that contains the info related to Products.
+ *
+ * Class Product
+ * @package model
+ */
 class Product
 {
     /** @var  $id int */

@@ -1,14 +1,20 @@
 <?php
 namespace controller;
 
-
-
 use constants\Constants;
 use repositories\UserRepository;
 
+/**
+ * Class to manage requests related to the User
+ *
+ * Class UserController
+ * @package controller
+ */
 class UserController extends Controller
 {
     /**
+     * Shows the for to create a user.
+     *
      * Method GET
      * Route ""/user/create"
      *
@@ -22,6 +28,8 @@ class UserController extends Controller
     }
 
     /**
+     * Inserts a user in the DB. (Missing proper validation for the input data)
+     *
      * Method POST
      * Route ""/user/create"
      *

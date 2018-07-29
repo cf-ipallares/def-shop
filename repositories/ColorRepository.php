@@ -70,7 +70,7 @@ class ColorRepository extends Service
     /**
      * Returns an array of Color objects witht the Colors in the DB.
      *
-     * @return array - Array with Color objects
+     * @return array - [ Model|Color ]
      */
     public function getColors() : array {
         /* To avoid querying everytime we set it as a class property so the query will only happen first time (Caching it would be better) */
@@ -87,19 +87,13 @@ class ColorRepository extends Service
      *
      * @return array - Array with Color objects.
      */
-    private function findColors() {
+    private function findColors() : array {
         $pdo = $this->dbService->getConnection();
         $sql = "select * from Colors";
-        /** @var  $stmt \PDOStatement */
+        /** @var  $stmt PDOStatement */
         $stmt = $pdo->prepare($sql);
         $stmt->execute();
-        try {
-            $colorTRS = $stmt-> fetchAll(\PDO::FETCH_OBJ);
-        }
-        catch(\Exception $e) {
-            $x = 0;
-        }
-
+        $colorTRS = $stmt-> fetchAll(PDO::FETCH_OBJ);
         $pdo = null;
         $colors = $this->ormService->convertColors($colorTRS);
 

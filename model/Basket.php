@@ -2,6 +2,12 @@
 
 namespace model;
 
+/**
+ * Model that contains the info related to Basket.
+ *
+ * Class Basket
+ * @package model
+ */
 class Basket {
 
     /** @var $basketItems array */

@@ -1,5 +1,7 @@
 <?php
 
+// Router to map urls to controller-action methods
+
 use controller\LoginController;
 use controller\ProductController;
 use controller\BasketController;

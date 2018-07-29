@@ -1,4 +1,5 @@
 <?php
+    // Entry point to the application
 
     session_start();
     $_SESSION['user_id'] = 1;
@@ -17,15 +18,19 @@
     use services\ORMService;
     use constants\Constants;
 
+    // General utility services
     /** @var ConfigService $configService */
     $configService = new ConfigService();
     /** @var HelperService $helperService */
     $helperService = new HelperService();
+    /** @var DbService $dbService */
+    $dbService = new DbService($configService, $helperService);
+
+    // Container for services and general info
     /** @var $container Container */
     $container = new Container();
 
-    /** @var DbService $dbService */
-    $dbService = new DbService($configService, $helperService);
+    // Repositories for the models. As services so they can be injected.
     /** @var UserRepository $userRepository */
     $userRepository = new UserRepository($dbService, $helperService);
     /** @var $ormService ORMService */

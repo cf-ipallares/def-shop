@@ -4,12 +4,17 @@ namespace repositories;
 
 use model\Basket;
 use model\Product;
-use model\User;
 use services\DbService;
 use services\HelperService;
 use services\Service;
 use PDO;
 
+/**
+ * Repository to manage tasks related to orders.
+ *
+ * Class OrderRepository
+ * @package repositories
+ */
 class OrderRepository extends Service
 {
     /** @var  $dbService DbService */
@@ -24,7 +29,7 @@ class OrderRepository extends Service
      * @param $dbService
      * @param $helperService
      */
-    public function __construct($dbService, $helperService)
+    public function __construct(DbService $dbService, HelperService $helperService)
     {
         $this->dbService = $dbService;
         $this->helperService = $helperService;
@@ -83,6 +88,5 @@ class OrderRepository extends Service
         }catch(\PDOException $e) {
             $pdo->rollBack();
         }
-
     }
 }

@@ -6,9 +6,17 @@ use repositories\UserRepository;
 use services\HelperService;
 use constants\Constants;
 
+/**
+ * Class to manage requests related to Products.
+ *
+ * Class ProductController
+ * @package controller
+ */
 class ProductController extends Controller
 {
     /**
+     * Shows the list of products
+     *
      * Method GET
      * Route "/products"
      */
@@ -30,46 +38,15 @@ class ProductController extends Controller
     }
 
     /**
+     * Shows a list of products filtered by color
+     *
      * Method GET
      * Route "/category/products"
      */
-    public function categoryProductsAction() {
-        if (isset($_GET['category'])) {
-            /** @var HelperService $helperService */
-            $helperService = $this->container->getService(Constants::HELPER_SERVICE);
-            if ($helperService->isUserLogged()) {
-                $this->indexAction();
-            }
-            else {
-                $template = "login.php";
-                include ROOT. "views/layout.php";
-            }
-        }
-    }
+    public function colorProductsAction() {
+        /** TODO */
+        if (isset($_GET['color_id'])) {
 
-    /**
-     * Method POST
-     * Route "/login"
-     */
-    public function loginAction() {
-        if (isset($_POST['user_email']) && !empty($_POST['user_email']) && isset($_POST['user_pwd']) && !empty($_POST['user_pwd'])) {
-            /** @var UserRepository $userRepository */
-            $userRepositoryService = $this->container->getService(Constants::USER_REPOSITORY_SERVICE);
-            if ( $userObj = $userRepositoryService->loginUser($_POST['user_email'], $_POST['user_pwd'])) {
-                $infoMsg = "Login Successful";
-                $template = "user_menu.php";
-                include ROOT. "views/layout.php";
-            }
-            else {
-                $errorMsg = "No user with given email and password.";
-                $template = "login.php";
-                include ROOT. "views/layout.php";
-            }
-        }
-        else {
-            $errorMsg = "Missing required info";
-            $template = "login.php";
-            include ROOT. "views/layout.php";
         }
     }
 

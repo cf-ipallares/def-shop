@@ -7,6 +7,12 @@ use model\Basket;
 use model\BasketItem;
 use services\Service;
 
+/**
+ * Repository to manage tasks related to the Basket.
+ *
+ * Class BasketRepository
+ * @package repositories
+ */
 class BasketRepository extends Service
 {
     /** @var  $productRepository ProductRepository */
@@ -21,6 +27,12 @@ class BasketRepository extends Service
         $this->productRepository = $productRepository;
     }
 
+    /**
+     * Logic to add a product to the basket.
+     * If the product is already in the basket it increases the quantity for such product.
+     *
+     * @param int $productId
+     */
     public function addProductToBasket(int $productId) {
         $jsonBasket = $_SESSION[Constants::BASKET_COOKIE_NAME];
         if ($jsonBasket && !empty($jsonBasket)) {
@@ -40,7 +52,12 @@ class BasketRepository extends Service
 
     }
 
-    public function getBasket() {
+    /**
+     * Gets the basket contents with all info necessary in frontend.
+     *
+     * @return Basket
+     */
+    public function getBasket() : Basket {
         $basketProducts = [];
         $jsonBasket = $_SESSION[Constants::BASKET_COOKIE_NAME];
         if ($jsonBasket && !empty($jsonBasket)) {
