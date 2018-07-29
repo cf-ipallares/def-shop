@@ -11,6 +11,9 @@
         else if (isset($action) && $action == 'createUserForm' || $action == 'createUser') {
             include ROOT . "views/user/create_user.php";
         }
+        else if (isset($action) && $action == 'login') {
+            include ROOT . "views/user/login.php";
+        }
         ?>
     </div>
 </div>

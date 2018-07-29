@@ -16,11 +16,14 @@ class LoginController extends Controller
         /** @var HelperService $helperService */
         $helperService = $this->container->getService(Constants::HELPER_SERVICE);
         if ($helperService->isUserLogged()) {
+            // TODO: Redirect to products
             $this->indexAction();
         }
         else {
-            $template = "login.php";
-            include ROOT. "views/layout.php";
+            $action = "login";
+            // I don't like this, but helps to simplify the url prefix I need to use:
+            $urlPrefix = $this->container->getService('config_service')->get('url_prefix');
+            include ROOT. "views/layout/layout.php";
         }
     }
 
