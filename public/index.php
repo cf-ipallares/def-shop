@@ -2,8 +2,7 @@
     // Entry point to the application
 
     session_start();
-    $_SESSION['user_id'] = 1;
-    //session_destroy();
+
     include '../autoload.php';
 
     use services\ConfigService;
