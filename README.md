@@ -2,7 +2,7 @@
 
 * scripts/def-shop-db.sql has the DB structure and contents to get started.
 * In paramters.yml there is a property `url_prefix` to map the root of the url.
-
+* PHP 7.2 used.
 
 **CODE DESCRPITION** 
 * Routes (quite self descriptive):
@@ -57,3 +57,5 @@
 * I really don't like the approach that I took in the code to put together products and colors. I would cahnge it to a view in the database that put tables together and this way the conversion between the database and the Product Model would be way simpler.
 
 * Payment (both front and backend) should only be available when a user is logged.
+
+* No time for unit tests.
